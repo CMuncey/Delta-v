@@ -3,17 +3,16 @@ using Robust.Shared.Network;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
-namespace Content.Shared._DV.Light.JanitorServiceLight;
+namespace Content.Shared._DV.Janitor.Components;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class JanitorServiceLightComponent : Component
 {
-    [DataField, Required(true)]
+    [DataField(required: true)]
     public string Department = string.Empty;
 
-    [DataField, AutoNetworkedField]
+    [DataField]
     public bool Request = false;
 
     [DataField]
@@ -25,6 +24,3 @@ public sealed partial class JanitorServiceLightComponent : Component
     [DataField]
     public ProtoId<SinkPortPrototype> TogglePort = "Toggle";
 }
-
-[Serializable]
-public sealed class JanitorServiceLightRequestEvent : EventArgs;

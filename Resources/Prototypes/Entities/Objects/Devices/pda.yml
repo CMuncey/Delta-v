@@ -674,6 +674,8 @@
     borderColor: "#5D2D56"
   - type: Icon
     state: pda-janitor
+  - type: Pager
+    autoLinkJobs: [Janitor]
 
 - type: entity
   parent: BasePDA

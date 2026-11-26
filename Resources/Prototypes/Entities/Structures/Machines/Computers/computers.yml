@@ -1,5 +1,66 @@
 - type: entity
   parent: BaseComputerAiAccess
+  id: ComputerJanitorServiceRequest
+  name: janitor service request computer
+  description: Used to show departments requesting janitorial services. Ignore the sprite
+  components:
+  - type: Computer
+    board: JanitorServiceRequestComputerCircuitboard
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: alert-0
+    - map: ["computerLayerKeys"]
+      state: atmos_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: GenericVisualizer
+    visuals:
+      enum.ComputerVisuals.Powered:
+        computerLayerScreen:
+          True: { visible: true, shader: unshaded }
+          False: { visible: false }
+        computerLayerKeys:
+          True: { visible: true, shader: unshaded }
+          False: { visible: true, shader: shaded }
+      enum.AtmosAlertsComputerVisuals.ComputerLayerScreen:
+        computerLayerScreen:
+          0: { state: alert-0 }
+          1: { state: alert-0 }
+          2: { state: alert-1 }
+          3: { state: alert-2 }
+          4: { state: alert-2 }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: false }
+          False: { visible: true }
+  - type: JanitorServiceRequestComputer
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: NTNet
+    transmitFrequencyId: NTNet
+  - type: PageSender
+    autoLinkJobs: [Janitor]
+  # - type: ActivatableUI
+  #   singleUser: true
+  #   key: enum.AtmosAlertsComputerUiKey.Key
+  # - type: UserInterface
+  #   interfaces:
+  #       enum.AtmosAlertsComputerUiKey.Key:
+  #           type: AtmosAlertsComputerBoundUserInterface
+  #       enum.WiresUiKey.Key:
+  #         type: WiresBoundUserInterface
+  # - type: GuideHelp
+  #   guides:
+  #   - AtmosphericAlertsComputer
+  #   - DeviceMonitoringAndControl
+
+- type: entity
+  parent: BaseComputerAiAccess
   id: ComputerAlert
   name: atmospheric alerts computer
   description: Used to access the station's atmospheric automated alert system.

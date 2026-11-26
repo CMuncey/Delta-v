@@ -30,3 +30,8 @@
         Heat: 5
     popupText: powered-light-component-burn-hand
   - type: JanitorServiceLight
+    department: Medical
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: NTNet
+    transmitFrequencyId: NTNet
